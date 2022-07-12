@@ -53,14 +53,13 @@ with open(file, 'r') as f:
     yPoints = []
 
     while line[0] != '':
-        if "NO_FIX" in line:
-            continue
-        # convert the lat/lon to x/y plane
-        x,y = AP.latlon_to_xy(float(line[latInd]),float(line[lonInd]))
+        if "NO_FIX" not in line:
+            # convert the lat/lon to x/y plane
+            x,y = AP.latlon_to_xy(float(line[latInd]),float(line[lonInd]))
 
-        # add points to list
-        xPoints.append(x)
-        yPoints.append(y)
+            # add points to list
+            xPoints.append(x)
+            yPoints.append(y)
 
         # get the next line
         line = f.readline().strip().split(',')
